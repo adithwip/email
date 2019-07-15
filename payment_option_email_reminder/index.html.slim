@@ -1,0 +1,197 @@
+- @meta_description = "Payment Reminder: #{@order.code} &ndash; HijUp.com"
+- @window_title = "Payment Reminder: #{@order.code} &ndash; HijUp.com"
+- utm_link = "?utm_source=#{@utm_source}&utm_campaign=#{@utm_campaign}&utm_content=secondary-nav-brand&utm_medium=#{@utm_medium}"
+doctype html
+html[lang="en"]
+  head
+    meta[charset="UTF-8"]
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    meta[http-equiv="X-UA-Compatible" content="ie=edge"]
+    link[rel="stylesheet" href="https://res.cloudinary.com/dtnjqwzao/raw/upload/v1539669702/email/style.css"]
+    title
+      | Bank Transfer Email Reminder
+  body
+    .root-container
+      .top-banner
+        img.responsive[src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539166264/email/email-reminder-top-banner.png" alt="Top banner email reminder"]
+      .hijup-logo-email-reminder
+        img.responsive[src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539166264/email/hijup-logo-email-reminder.png" alt="HIJUP Logo Email Reminder"]
+      .container-row.link-menus.align-center
+        a[href="https://www.hijup.com/id/products/new-arrival" target="_blank"]
+          |  WHAT'S NEW 
+        a[href="https://www.hijup.com/id/products/most-popular" target="_blank"]
+          |  MOST POPULAR 
+        a[href="https://www.hijup.com/id/products" target="_blank"]
+          |  ALL COLLECTIONS 
+        a[href="https://www.hijup.com/magazine" target="_blank"]
+          |  E-MAGAZINE 
+        a[href="https://www.hijup.com/id/products/sales" target="_blank"]
+          |  SALE 
+      .greeting-paragraph
+        p
+          | Assalamualaikum, #{@order.address.name.titleize}!
+        span
+          | Pesanan Anda telah kami terima dengan kode pesanan 
+        span[class="text-bold"]
+          | #{@order.code}. 
+        span[class="text-warning"]
+          | Silahkan lakukan pembayaran paling lambat #{l(@order.expired_time, format: '%d %B %Y pukul %H:%M')} 
+        span
+          | agar pesanan Anda dapat kami proses. Pesanan Anda akan otomatis dibatalkan jika Anda tidak melakukan pembayaran pada jangka waktu tersebut.
+        p
+          | Berikut langkah-langkah pembayaran menggunakan bank transfer:
+      .step-one
+        h1
+          | 1. LAKUKAN PEMBAYARAN
+        .step-one-description
+          span
+            | Lakukan pembayaran sejumlah 
+          span
+            | #{ lm @order.transfer_amount.to_i.to_money("idr"), @order.currency} 
+          span
+            | ke salah satu rekening HIJUP di bawah ini
+        img.responsive[src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539166264/email/atas_nama_hijup_com.png" alt="Atas nama hijup dot com detail info"]
+        .container-row.align-center
+          img.responsive[src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539166264/email/bank_accounts_card.png" alt="Bank Accounts Detail Cards"]
+      .step-two
+        h1
+          | 2. KONFIRMASI PEMBAYARAN ANDA
+        p
+          | Setelah melakukan pembayaran, silahkan konfirmasi di:
+        .container-row.confirmation-button-wrapper
+          .container-row
+            input.confirmation-button[type="button" onclick="location.href='http://www.hijup.com/id/confirm/#{@order.id}/#{@order.token}#{utm_link}'" formtarget="_blank" value="KONFIRMASI"]
+        p
+          | Atau lakukan langkah berikut:
+        ol
+          li
+            span
+              | Sign ke 
+            span[style="text-decoration: underline;color: burlywood;"]
+              | HIJUP.COM
+          li
+            span
+              | Cari pesanan Anda di halaman 
+            span[style="text-decoration: underline; color: burlywood;"]
+              | Riwayat Belanja
+          li
+            | Klik tombol "Konfirmasi"
+          li
+            | Lengkapi informasi yang dibutuhkan lalu klik tombol "Submit"
+      hr
+      .container-row.customer-products
+        p.table-header.align-center[style="flex: 2;"]
+          | PRODUK
+        p.table-header.align-center[style="flex: 1;"]
+          | JUMLAH HARGA (RP)
+      .container-column
+        - @order.cart.items.each do | item |
+          .customer-product
+            .container-row[style="margin-right: 1rem;"]
+              .container-row[style="flex: 2"]
+                img[src="#{item.unit.variant.primary_image.image.url}" class="responsive" alt="customer product" style="margin-right: 1rem; max-width: 100px;"]
+                .container-column.product-info[style="align-items: flex-start !important; align-content: flex-start !important;"]
+                  h3
+                    | #{item.product.name}
+                  p
+                    | #{item.product.vendor.name}
+                  p
+                    | Ukuran: #{item.unit.size}
+                  p
+                    | Jumlah: #{item.amount}
+              .price.align-center[style="flex: 1"]
+                h1
+                  | #{number_with_delimiter(item.price.to_i, :delimiter => '.', :precision => 0)}
+
+        .container-column.product-total
+          .subtotal.container-row
+            p.align-right[style="flex: 2; margin-right: 3rem;"]
+              | Subtotal
+            p.align-center[style="flex: 1; font-weight: 600;"]
+              | #{lm @order.total_price.to_i.to_money("idr"), @order.currency}
+          .shipping-fee.container-row
+            p.align-right[style="flex: 2; margin-right: 3rem;"]
+              | Biaya Pengiriman
+            p.align-center[style="flex: 1; font-weight: 600;"]
+              | #{lm @order.shipping_cost.to_i.to_money("idr"), @order.currency}
+          .transaction-code.container-row
+            p.align-right[style="flex: 2; margin-right: 3rem;"]
+              | Diskon Produk HIJUP
+            p.align-center[style="flex: 1; font-weight: 600;"]
+              | #{@order.transaction_code}
+          .transaction-code.container-row
+            p.align-right[style="flex: 2; margin-right: 3rem;"]
+              | Potongan Biaya Pengiriman
+            p.align-center[style="flex: 1; font-weight: 600;"]
+              | #{@order.transaction_code}
+          .transaction-code.container-row
+            p.align-right[style="flex: 2; margin-right: 3rem;"]
+              | Kode Transaksi
+            p.align-center[style="flex: 1; font-weight: 600;"]
+              | #{@order.transaction_code}
+          .total.container-row
+            p.align-right[style="flex: 2; margin-right: 3rem; font-weight: 600;"]
+              | Total Harga
+            p.align-center[style="flex: 1; font-weight: 600;"]
+              | #{lm @order.transfer_amount.to_i.to_money("idr"), @order.currency}
+        .shipping-detail
+          h2
+            | ALAMAT PENGIRIMAN
+          .container-row.customer-name
+            p[style="margin-right: 2rem; font-weight: 600;"]
+              | Nama:
+            p
+              | #{@order.address.name.titleize}
+          .container-row.customer-name
+            p[style="margin-right: 2rem; font-weight: 600;"]
+              | Alamat:
+            p
+              | #{@order.address.address}, #{@order.address.city}, #{@order.address.district}, #{@order.address.country}, #{@order.address.postal_code}
+          .container-row.customer-name
+            p[style="margin-right: 2rem; font-weight: 600;"]
+              | No. HP:
+            p
+              | #{@order.address.phone}
+          .container-row.customer-name
+            p[style="margin-right: 2rem; font-weight: 600; font-size: 2rem; text-transform: uppercase;"]
+              | Metode Pengiriman:
+            p
+              | Metode pengiriman?
+      img.responsive[src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539166264/email/customer-care-information.png" alt="Customer Care Information"]
+      img.responsive[src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539166264/email/footer-separator.png" alt="Footer separator"]
+      .container-column
+        .container-row
+          a href="https://www.hijup.com/id/categories/scarf" target="_blank" 
+            img.responsive.full-flex alt=("Scarf link") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539166264/email/button-scarf.png" /
+          a href="https://www.hijup.com/id/categories/clothing" target="_blank" 
+            img.responsive.full-flex alt=("Clothing link") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539166263/email/button-clothing.png" /
+        .container-row
+          a href="https://www.hijup.com/id/products/new-arrival" target="_blank" 
+            img.responsive.full-flex alt=("Scarf link") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539166263/email/button-new-arrival.png" /
+          a href="https://www.hijup.com/id/products/sales" target="_blank" 
+            img.responsive.full-flex alt=("Clothing link") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539166263/email/button-sale.png" /
+      .container-row
+        a href="https://play.google.com/store/apps/details?id=com.hijup.mobile&hl=id_ID" target="_blank" 
+          img.responsive alt=("Download HIJUP") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539258322/email/download-hijup-apps-button.png" /
+        a href="https://itunes.apple.com/id/app/hijup/id1050544944?mt=8" target="_blank" 
+          img.responsive alt=("Download HIJUP") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539258322/email/app-store-banner.png" /
+        a href="https://play.google.com/store/apps/details?id=com.hijup.mobile&hl=id_ID" style=("margin-left: 10%;") target="_blank" 
+          img.responsive alt=("Download HIJUP") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539258322/email/google-play-banner.png" /
+      .container-row.socmed-accounts.align-center
+        a href="https://www.facebook.com/HIJUPcom/" target="_blank" 
+          | <img src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539243438/email/facebook-socmed-account.png"
+          | alt="facebook account"
+        a href="https://www.instagram.com/hijup" target="_blank" 
+          img alt=("instagram account") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539243438/email/instagram-socmed-account.png" /
+        a href="https://www.youtube.com/hijupcom" target="_blank" 
+          img alt=("youtube account") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539243438/email/youtube-socmed-account.png" /
+        a href="https://www.twitter.com/hijup" target="_blank" 
+          img alt=("twitter account") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539243438/email/twitter-socmed-account.png" /
+        a href="https://www.linkedin.com/company/hijup-com" target="_blank" 
+          img alt=("linkedin account") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539243438/email/linkedin-socmed-account.png" /
+        a href="https://line.me/R/ti/p/@usg8207g" target="_blank" 
+          img alt=("line account") src="https://res.cloudinary.com/dtnjqwzao/image/upload/v1539243438/email/line-socmed-account.png" /
+      .copyright.container-column.align-center style=("margin-top: 2rem;") 
+        p.small-margin-top-bottom &copy; HIJUP.COM | PT.HIJUP.COM
+        p.small-margin-top-bottom Pejaten Corner | Pejaten Barat Raya No. 2B
+        p.small-margin-top-bottom Pasar Minggu, Jakarta Selatan, 12510

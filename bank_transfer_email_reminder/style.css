@@ -1,0 +1,234 @@
+html {
+  /* border-box box model allows us to add padding and border to our elements without increasing their size */
+  box-sizing: border-box;
+  /* A system font stack so things load nice and quick! */
+  font-family: "avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 10px;
+}
+
+/*
+  WAT IS THIS?!
+  We inherit box-sizing: border-box; from our <html> selector
+  Apparently this is a bit better than applying box-sizing: border-box; directly to the * selector
+*/
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a,
+a:active,
+a:hover,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+/* REUSABLE STUFF */
+/* FLEX STUFF */
+/* AND LAYOUTING */
+
+.root-container {
+  /* Autoprefixer for display */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  /* Autoprefixer for flex-direction */
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.container-row {
+  /* Autoprefixer for display */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  /* Autoprefixer for align items */
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  /* Autoprefixer for align content */
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+
+.container-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.wrap {
+  /* Autoprefixer for flex-wrap */
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.full-flex {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.align-center {
+  /* Autoprefixer for centering */
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  /* Non-flex centering */
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.padding-0.2rem-1rem {
+  padding: 0.2rem 1rem;
+}
+
+.padding {
+  margin: 1rem;
+}
+
+.responsive {
+  /* image to scale down if it has to,
+  but never scale up to be
+  larger than its original size */
+  width: 100%;
+  height: auto;
+}
+
+hr {
+  display: block;
+  height: 0.1rem;
+  border: 0;
+  border-top: 0.1rem solid black;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* COMPONENT STUFF */
+
+.top-promo-banner {
+  background-color: black;
+  color: white;
+}
+
+.top-banner {
+  text-align: center;
+}
+
+.hijup-logo-email-reminder {
+  text-align: center;
+}
+
+.link-menus {
+  border-bottom: 0.05rem solid black;
+  font-size: 1rem;
+}
+
+.link-menus
+a {
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+}
+
+.link-menus
+a:last-child {
+  color: red;
+}
+
+.greeting-paragraph {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  text-align: justify;
+}
+
+.step-one,
+.step-two {
+  font-size: 1.5rem;
+}
+
+.step-one-description {
+  margin-bottom: 2rem;
+}
+
+.step-one-description
+span:nth-child(2) {
+  color: red;
+  font-weight: 600;
+}
+
+.confirmation-button {
+  /* Button appearance */
+  background-color: black;
+  color: white;
+  padding: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  border-radius: 0.5rem;
+  /* Shadow of the button */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.confirmation-button-wrapper {
+  justify-content: center;
+}
+
+.table-header {
+  background-color: #ccc;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.product-info
+p {
+  margin: 0;
+}
+
+.customer-product {
+  padding: 1rem 0;
+  border-bottom: 0.1rem solid black;
+}
+
+.product-total
+div:last-child {
+  background-color: #ccc;
+}
+
+.subtotal,
+.shipping-fee,
+.transaction-code,
+.total {
+  font-size: 1.5rem;
+}
+
+.customer-name {
+  font-size: 1.5rem;
+}
+
+.socmed-accounts {
+  background-color: black;
+  padding: 1rem;
+}
+
+.socmed-accounts a{
+  flex: 1;
+}
