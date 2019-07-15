@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="x-apple-disable-message-reformatting">
 	<title></title>
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
 
 	<style>
 		
@@ -117,6 +118,10 @@
 
 
 	<style>
+
+		* {
+			font-family: 'Lato', sans-serif;
+		}
 		
 		.button-td,
 		.button-a {
@@ -172,6 +177,9 @@
 				display: inline-block !important;
 			}
 
+			.table-bank-accounts tr:nth-child(odd) {
+				background-color: #f2f2f2;
+			}
 			
 			.email-container p {
 				font-size: 17px !important;
@@ -187,12 +195,6 @@
 		<!-- Email Header : BEGIN -->
 		<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="margin: 0 auto;"
 		 class="email-container">
-			<!-- <tr>
-				<td style="text-align: center;">
-					<img src="https://asset.hijup.com/image/upload/v1539166264/email/email-reminder-top-banner.png" alt="top-banner"
-					 style="width: 100%; height: auto;">
-				</td>
-			</tr> -->
 			<tr>
 				<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="border-bottom: 6px solid black;">
 					<tr>
@@ -213,17 +215,7 @@
 					<h2>Tagihan Pembayaran #pr48ik</h2>
 				</td>
 			</tr>
-		</table>
-		
-		<!-- <table align="center" role="presentation" cellspacing="0" cellpadding="5" border="0" style="max-width: 600px; font-size: 14px; border-bottom: 1px solid black;">
-			<tr style="width: 100%;">
-				<td style="text-align: center;"><a href="https://www.hijup.com/id/products/new-arrival" target="_blank">What's New</a></td>
-				<td style="text-align: center;"><a href="https://www.hijup.com/id/products/most-popular" target="_blank">Most Popular</a></td>
-				<td style="text-align: center;"><a href="https://www.hijup.com/id/products" target="_blank">All Collection</a></td>
-				<td style="text-align: center;"><a href="https://www.hijup.com/magazine" target="_blank">E-Magazine</a></td>
-				<td style="text-align: center; color: red;"><a href="https://www.hijup.com/id/products/sales" target="_blank">Sale</a></td>
-			</tr>
-		</table> -->
+		</table> 
 		<!-- Email Header : END -->
 
 		<!-- Email Body Greeting : START -->
@@ -233,13 +225,17 @@
 				<td>Assalamualaiku, Firza!</td>
 			</tr>
 			<tr>
-				<td>Pesanan Anda telah kami terima dengan kode pesanan <strong>pfelng</strong>. Silahkan lakukan pembayaran <span
-					 style="color: red;">paling lambat 26 September 2018 pukul 12:00</span> agar pesanan Anda dapat kami proses.
-					Pesanan Anda akan otomatis dibatalkan jika Anda tidak melakukan pembayaran pada jangka waktu tersebut.</td>
+				<td style="text-align: justify;">Terima kasih telah berbelanja di HIJUP.com. Mohon segera lakukan pembayar agar pesanan Anda dapat kami proses sebelum:</td>
 			</tr>
 			<tr>
-				<td>
-					Berikut langkah-langkah pembayaran menggunakan bank transfer:
+				<td style="text-align: center; color: red; font-size: 18px; font-weight: bold; padding: 4px 8px;">
+					<span style="background-color: #f4f4f4; padding: 8px 16px;">Selasa, 7 Mei 2019 Pukul 23:01 WIB (1x12 jam)</span>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">
+					Lakukan pembayaran sebesar:<br>
+					<span style="color: #4a93b5; font-size: 40px; font-weight: bold;">Rp152.000<span>
 				</td>
 			</tr>
 		</table>
@@ -254,17 +250,55 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Lakukan pembayaran sejumlah <span style="color: red;">Rp1.227.112</span> ke salah satu rekening HIJUP dibawah
-					ini</td>
-			</tr>
-			<tr>
-				<td style="text-align: center;">
-					<img src="https://asset.hijup.com/image/upload/v1539166264/email/atas_nama_hijup_com.png" alt="hijup-logo" style="max-width: 100%; height: auto;">
+				<td>
+					<div>
+						<table>
+							<tr>
+								<td style="background-color: black; color: white; padding: 4px 4px;">1</td>
+								<td style="background-color: #f4f4f4; font-size: 14px; font-weight: bold; padding: 4px 4px;">Transfer dilakukan melalui rekening atas nama PT. HIJUP.com berikut ini</td>
+							</tr>
+						</table>
+					</div>
 				</td>
 			</tr>
 			<tr>
-				<td style="text-align: center;">
-					<img src="https://asset.hijup.com/image/upload/v1539166264/email/bank_accounts_card.png" alt="hijup-logo" style="max-width: 100%; height: auto;">
+				<td>
+					<div>
+						<table class="table-bank-accounts" cellpadding="10">
+							<tr style="text-align: center;">
+								<td style="width: 50%; border-right: 1px solid black;">
+									<img	src="https://asset.hijup.com/image/upload/v1563185942/email/bank-logos/BCA-logo.png"
+												alt="bca-logo"
+												style="max-width: 70px; height: auto;">
+								<td>
+								<td style="width: 50%">552 0409 400</td>
+							</tr>
+							<tr style="text-align: center;">
+								<td style="width: 50%; border-right: 1px solid black;">
+									<img	src="https://asset.hijup.com/image/upload/v1563185942/email/bank-logos/mandiri-logo.png"
+												alt="bca-logo"
+												style="max-width: 70px; height: auto;">
+								<td>
+								<td style="width: 50%">07 0000 8999 000</td>
+							</tr>
+							<tr style="text-align: center;">
+								<td style="width: 50%; border-right: 1px solid black;">
+									<img	src="https://asset.hijup.com/image/upload/v1563185942/email/bank-logos/cimb-niaga-logo.png"
+												alt="bca-logo"
+												style="max-width: 70px; height: auto;">
+								<td>
+								<td style="width: 50%">80 3330 333000</td>
+							</tr>
+							<tr style="text-align: center;">
+								<td style="width: 50%; border-right: 1px solid black;">
+									<img	src="https://asset.hijup.com/image/upload/v1563185942/email/bank-logos/cimb-niaga-syariah-logo_copy.png"
+												alt="bca-logo"
+												style="max-width: 70px; height: auto;">
+								<td>
+								<td style="width: 50%">86 0030 300 900</td>
+							</tr>
+						</table>
+					</div>
 				</td>
 			</tr>
 
