@@ -177,9 +177,10 @@
 				display: inline-block !important;
 			}
 			
-			.email-container p {
-				font-size: 17px !important;
-			}
+				/* why i give every p a 17px? */
+			/* .email-container p {
+				font-size: 17px !important; 
+			} */
 		}
 	</style>
 
@@ -238,7 +239,7 @@
 		<!-- Email Body Greeting : END -->
 
 		<!-- Email Step For Payment : START -->
-		<table align="center" role="presentation" cellspacing="0" cellpadding="10" border="0" width="600" style="margin: 0 auto; border-bottom: 1px solid black;"
+		<table align="center" role="presentation" cellspacing="0" cellpadding="10" border="0" width="600" style="margin: 0 auto; border-bottom: 2px solid black;"
 		 class="email-container">
 			<tr>
 				<td>
@@ -337,120 +338,188 @@
 		</table>
 		<!-- Email Step For Payment : END -->
 
-		<!-- Email Products List : START -->
-		<table align="center" role="presentation" cellspacing="0" cellpadding="10" border="0" width="600" style="margin: 0 auto; border-bottom: 1px solid black;" class="email-container">
-			<td width="60%" valign="top">
-				<table style="display: block; margin: 0 !important;background-color: #C1C4CA; padding: 10px;">
-					<tr>
-						<td style="text-align: center; width: 100%; font-size: 12px;">PRODUK<td>
-					</tr>
-				</table>
-				<table style="display: block; margin: 0 !important;" cellpadding="10">
-					<tr>
-						<td width="40%" style="text-align: center;">
-							<img src="https://asset.hijup.com/image/upload/v1539166264/email/customer_product_dummy_photo.png" alt="top-banner"
-							 style="max-width: 100%; height: auto;">
-						</td>
-						<td width="60%">
-							<h5>Kavya Outer</h5>
-							<p>HIJUP X TIQASYA</p>
-							<p>Ukuran: XL</p>
-							<p>Jumlah: 1</p>
-						</td>
-					</tr>
-				</table>
-				<table style="display: block; margin: 0 !important;" cellpadding="10">
-					<tr>
-						<td width="40%" style="text-align: center;">
-							<img src="https://asset.hijup.com/image/upload/v1539166264/email/customer_product_dummy_photo.png" alt="top-banner"
-							 style="max-width: 100%; height: auto;">
-						</td>
-						<td width="60%">
-							<h5>Kavya Outer</h5>
-							<p>HIJUP X TIQASYA</p>
-							<p>Ukuran: XL</p>
-							<p>Jumlah: 1</p>
-						</td>
-					</tr>
-				</table>
-			</td>
-			<td width="40%" valign="top">
-				<table style="display: block; margin: 0 !important;background-color: #C1C4CA; padding: 10px;">
-					<tr>
-						<td style="text-align: center; width: 100%; font-size: 12px;">JUMLAH HARGA (RP)<td>
-					</tr>
-				</table>
-				<table style="display: block; margin: 0 !important;">
-					<tr>
-						<td style="height: 200px; width: 100%;">
-							<h3>279.000</h3>
-						</td>
-					</tr>
-				</table>
-				<table style="display: block; margin: 0 !important;">
-					<tr>
-						<td style="height: 200px; width: 100%;">
-							<h3>279.000</h3>
-						</td>
-					</tr>
-				</table>
-			</td>
+		<!-- Order Detail : START -->
+		<table align="center" role="presentation" cellspacing="0" border="0" width="600" style="margin: 0 auto;"
+		 class="email-container">
+			<tr>
+				<td>
+					<h3>DETAIL PESANAN</h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						<table style="width: 100%; text-align: center;">
+							<tr>
+								<td style="background-color: #f4f4f4; font-size: 14px; font-weight: bold; padding: 4px 4px; border-top: 1px solid gray;">Transfer dilakukan melalui rekening atas nama PT. HIJUP.com berikut ini</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						<table class="table-bank-accounts" cellpadding="10">
+							<tr style="border-bottom: 1px solid gray;">
+								<td style="width: 50%;">
+									Waktu Transaksi
+								<td>
+								<td style="width: 50%">
+									7 Mei 2019, 11:01 WIB
+								</td>
+							</tr>
+							<tr style="border-bottom: 1px solid gray;">
+								<td style="width: 50%;">
+									Metode Pembayaran
+								<td>
+								<td style="width: 50%;">
+									<i>Transfer Virtual Account</i>
+								</td>
+							</tr>
+							<tr style="border-bottom: 1px solid gray;">
+								<td style="width: 50%;">
+									Metode Pengiriman
+								<td>
+								<td style="width: 50%">
+									Regular
+								</td>
+							</tr>
+							<tr>
+								<td style="width: 50%; vertical-align: top;">
+									Alamat Pengiriman
+								<td>
+								<td style="width: 50%;">
+									Mawar Melati Jalan Bunga-Bunga No. 1, RT01/RW02 No. HP: 08123456789 Kec. Bunga, Jakarta Timur DKI Jakarta - 13220
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						<table style="width: 100%; text-align: center;">
+							<tr style="background-color: #f4f4f4; font-size: 14px; font-weight: bold; padding: 4px 4px; border-top: 1px solid gray;">
+								<th>PRODUK</th>
+								<th>TOTAL HARGA</th>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						<table class="table-bank-accounts" cellpadding="10">
+							<!-- Product info and price : START -->
+							<tr>
+								<td style="width: 50%;">
+									<div>
+										<table style="display: block; margin: 0 !important;" cellpadding="10">
+											<tr>
+												<td width="40%" style="text-align: center; vertical-align: top;">
+													<img src="https://asset.hijup.com/image/upload/v1539166264/email/customer_product_dummy_photo.png" alt="top-banner"
+													 style="max-width: 100%; height: auto;">
+												</td>
+												<td width="60%" style="vertical-align: top;">
+													<span style="font-size: 14px; font-weight: bold;">Kavya Outer</span>
+													<span style="font-size: 14px;">HIJUP X TIQASYA</span>
+													<h1></h1>
+													<span style="font-size: 14px;">Ukuran: XL</span>
+													<span style="font-size: 14px;">Jumlah: 1</span>
+												</td>
+											</tr>
+										</table>
+									</div>
+								<td>
+								<td style="width: 50%; font-size: 20px; font-weight: bold; text-align: center;">
+									Rp152.000
+								</td>
+							</tr>
+							<!-- Product info and price : END -->
+							<!-- Product info and price : START -->
+							<tr>
+								<td style="width: 50%;">
+									<div>
+										<table style="display: block; margin: 0 !important;" cellpadding="10">
+											<tr>
+												<td width="40%" style="text-align: center; vertical-align: top;">
+													<img src="https://asset.hijup.com/image/upload/v1539166264/email/customer_product_dummy_photo.png" alt="top-banner"
+														style="max-width: 100%; height: auto;">
+												</td>
+												<td width="60%" style="vertical-align: top;">
+													<span style="font-size: 14px; font-weight: bold;">Kavya Outer</span>
+													<span style="font-size: 14px;">HIJUP X TIQASYA</span>
+													<h1></h1>
+													<span style="font-size: 14px;">Ukuran: XL</span>
+													<span style="font-size: 14px;">Jumlah: 1</span>
+												</td>
+											</tr>
+										</table>
+									</div>
+								<td>
+								<td style="width: 50%; font-size: 20px; font-weight: bold; text-align: center;">
+									Rp152.000
+								</td>
+							</tr>
+							<!-- Product info and price : END -->
+							<tr style="border-bottom: 1px solid gray; border-top: 1px solid gray;">
+								<td style="width: 50%;">
+									Subtotal
+								<td>
+								<td style="width: 50%; text-align: center;">
+									<span style="font-size: 18px; font-weight: bold;">Rp152.000</span>
+								</td>
+							</tr>
+							<tr style="border-bottom: 1px solid gray;">
+								<td style="width: 50%;">
+									Diskon Voucher
+								<td>
+								<td style="width: 50%; text-align: center;">
+										<span style="font-size: 18px; font-weight: bold;">
+											0
+										</span>
+								</td>
+							</tr>
+							<tr style="border-bottom: 1px solid gray;">
+								<td style="width: 50%;">
+									Ongkos Kirim
+								<td>
+								<td style="width: 50%; text-align: center;">
+									<span style="font-size: 18px; font-weight: bold;">
+										0
+									</span>
+								</td>
+							</tr>
+							<tr style="border-bottom: 1px solid gray;">
+								<td style="width: 50%;">
+									HIJUP bersama Palestina
+								<td>
+								<td style="width: 50%; text-align: center;">
+									<span style="font-size: 18px; font-weight: bold;">
+										Rp100.000
+									</span>
+								</td>
+							</tr>
+							<!-- Total -->
+							<tr style="border-bottom: 1px solid gray;">
+								<td style="width: 50%; font-weight: bold;">
+									TOTAL PEMBAYARAN
+								<td>
+								<td style="width: 50%; background-color: #4a93b5; color: white; text-align: center;">
+									<span style="font-size: 18px; font-weight: bold;">
+										Rp252.000
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
 		</table>
-		<!-- Email Products List : END -->
-
-		<!-- Email Products Total Price : START -->
-		<table align="center" role="presentation" cellspacing="0" cellpadding="10" border="0" width="600" style="margin: 0 auto; border-bottom: 1px solid black;" class="email-container">
-			<tr>
-				<td width="60%" style="text-align: right;">
-					Subtotal
-				</td>
-				<td width="40%">
-					1.227.000
-				</td>
-			</tr>
-			<tr>
-				<td width="60%" style="text-align: right;">
-					Biaya Pengiriman
-				</td>
-				<td width="40%">
-					0
-				</td>
-			</tr>
-			<tr>
-				<td width="60%" style="text-align: right;">
-					Kode Transaksi
-				</td>
-				<td width="40%">
-					112
-				</td>
-			</tr>
-			<tr style="background-color: #C1C4CA;">
-				<td width="60%" style="text-align: right;">
-					Total Harga
-				</td>
-				<td width="40%">
-					1.227.112
-				</td>
-			</tr>
-		</table>
-		<!-- Email Products Total Price : END -->
-
-		<!-- Email Address of Customer : START -->
-		<table align="center" role="presentation" cellspacing="0" cellpadding="10" border="0" width="600" style="margin: 0 auto; border-bottom: 1px solid black;" class="email-container">
-			<tr>
-				<td><h4>ALAMAT PENGIRIMAN</h4></td>
-			</tr>
-			<tr>
-				<td><strong>Nama: </strong><span>Firza</span></td>
-			</tr>
-			<tr>
-				<td><strong>Alamat: </strong><span>HIJUP.com, Pejate, Jakarta Selatan</span></td>
-			</tr>
-			<tr>
-				<td><strong>No HP: </strong><span>081234567894</span></td>
-			</tr>
-		</table>
-		<!-- Email Address of Customer : END -->
+		<!-- Order Detail : END -->
 
 		<!-- Email Footer : START -->
 		<table align="center" role="presentation" cellspacing="0" cellpadding="10" border="0" width="600" style="margin: 0 auto; border-bottom: 1px solid black;" class="email-container">
