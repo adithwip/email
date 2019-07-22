@@ -25,11 +25,11 @@ html[lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microso
         tr
           td[style="text-align: center;"]
             h2
-              | Tagihan Pembayaran #pr48ik
+              | Tagihan Pembayaran #{@order.code}
       table.email-container[align="center" role="presentation" cellspacing="0" cellpadding="24" border="0" width="600" style="margin: 0 auto; border-bottom: 2px solid black;"]
         tr
           td
-            | Assalamualaikum, Firza!
+            | Assalamualaikum, #{@order.address.name.titleize}!
         tr
           td[style="text-align: justify;"]
             | Terima kasih telah berbelanja di HIJUP.com. Mohon segera lakukan pembayaran agar pesanan Anda dapat kami proses sebelum:
@@ -42,7 +42,7 @@ html[lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microso
             |  Lakukan pembayaran sebesar:
             br
             span[style="color: #4a93b5; font-size: 40px; font-weight: bold;"]
-              | Rp152.000
+              = lm @order.total_price.to_i.to_money("idr"), @order.currency
               span
 
         tr
@@ -60,14 +60,14 @@ html[lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microso
                           img[src="https://asset.hijup.com/image/upload/v1563274448/email/bank-logos/bca-logo-va.png" alt="hijup-logo" style="max-width: 100%; height: auto;"]
                       tr
                         td[align="center" style="font-size: 18px; font-weight: bold;"]
-                          |  39005331516 
+                          = @va.va_number 
         tr
           td[style="padding-top: 32px; padding-bottom: 32px; font-weight: bold; font-size: 12px;"]
             |  Jika Anda 
             span[style="color: red;"]
               | TIDAK MELAKUKAN
             |  PEMBAYARAN dalam jangka waktu 1x12 jam setelah pesanan dibuat, pesanan Anda akan otomatis dibatalkan. 
-      table.email-container[align="center" role="presentation" cellspacing="0" border="0" width="600" style="margin: 0 auto;"]
+      table.bca-va-payment-instruction[align="center" role="presentation" cellspacing="0" border="0" width="600" style="margin: 0 auto;"]
         tr
           td
             h3
@@ -138,14 +138,14 @@ html[lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microso
               li
                 | Pilih 
                 b
-                  | "m-BCA
+                  | "m-BCA"
                 | , lalu masukkan 
                 b
                   | kode akses m-BCA
               li
                 | Pilih 
                 b
-                  | "m-Transfer
+                  | "m-Transfer"
               li
                 | Pilih 
                 b
@@ -231,7 +231,7 @@ html[lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microso
           td[style="text-align: center;"]
             a.button-td.button-td-primary[href="#" style="background: #222222; border: 1px solid #000000; font-family: sans-serif; font-size: 15px; line-height: 15px; text-decoration: none; padding: 13px 17px; color: #ffffff; display: block; border-radius: 4px;"]
               |  LIHAT CARA LAINNYA 
-      table.email-container[align="center" role="presentation" cellspacing="0" border="0" width="600" style="margin: 0 auto;"]
+      table.order-detail[align="center" role="presentation" cellspacing="0" border="0" width="600" style="margin: 0 auto;"]
         tr
           td
             h3
